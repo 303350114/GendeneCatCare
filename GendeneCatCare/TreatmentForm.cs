@@ -168,7 +168,10 @@ namespace GendeneCatCare
 
                     treatmentRow["Description"] = txtPnlDescription.Text;
                     treatmentRow["Cost"] = Convert.ToDouble(txtPnlCost.Text);
+                    //Add the new row to the Table
+                    DM.dtTreatment.Rows.Add(treatmentRow);
 
+                    DM.UpdateTreatment();
                     hidePnlAddTreatment(); // Hide the panal of add treatment
                     //Give the user a success message
                     MessageBox.Show("Treatment added successfully", "Success");
