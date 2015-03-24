@@ -45,6 +45,20 @@
             this.btnUpdateVisit = new System.Windows.Forms.Button();
             this.btnDeleteVisit = new System.Windows.Forms.Button();
             this.btnReturn = new System.Windows.Forms.Button();
+            this.pnlVisit = new System.Windows.Forms.Panel();
+            this.lblPnlVisitNo = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.btnPnlCancel = new System.Windows.Forms.Button();
+            this.btnPnlSaveVisit = new System.Windows.Forms.Button();
+            this.lblPnlVisitID = new System.Windows.Forms.Label();
+            this.txtPnlCatID = new System.Windows.Forms.TextBox();
+            this.txtPnlStatus = new System.Windows.Forms.TextBox();
+            this.txtPnlVetID = new System.Windows.Forms.TextBox();
+            this.txtPnlVisitDate = new System.Windows.Forms.TextBox();
+            this.pnlVisit.SuspendLayout();
             this.SuspendLayout();
             // 
             // lstVisits
@@ -198,11 +212,134 @@
             this.btnReturn.UseVisualStyleBackColor = true;
             this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
             // 
+            // pnlVisit
+            // 
+            this.pnlVisit.Controls.Add(this.txtPnlVisitDate);
+            this.pnlVisit.Controls.Add(this.txtPnlVetID);
+            this.pnlVisit.Controls.Add(this.txtPnlStatus);
+            this.pnlVisit.Controls.Add(this.txtPnlCatID);
+            this.pnlVisit.Controls.Add(this.lblPnlVisitID);
+            this.pnlVisit.Controls.Add(this.btnPnlSaveVisit);
+            this.pnlVisit.Controls.Add(this.btnPnlCancel);
+            this.pnlVisit.Controls.Add(this.label5);
+            this.pnlVisit.Controls.Add(this.label4);
+            this.pnlVisit.Controls.Add(this.label3);
+            this.pnlVisit.Controls.Add(this.label2);
+            this.pnlVisit.Controls.Add(this.lblPnlVisitNo);
+            this.pnlVisit.Location = new System.Drawing.Point(86, 42);
+            this.pnlVisit.Name = "pnlVisit";
+            this.pnlVisit.Size = new System.Drawing.Size(513, 316);
+            this.pnlVisit.TabIndex = 17;
+            this.pnlVisit.Visible = false;
+            // 
+            // lblPnlVisitNo
+            // 
+            this.lblPnlVisitNo.AutoSize = true;
+            this.lblPnlVisitNo.Location = new System.Drawing.Point(154, 34);
+            this.lblPnlVisitNo.Name = "lblPnlVisitNo";
+            this.lblPnlVisitNo.Size = new System.Drawing.Size(64, 20);
+            this.lblPnlVisitNo.TabIndex = 0;
+            this.lblPnlVisitNo.Text = "Visit ID:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(159, 78);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(59, 20);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Cat ID:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(98, 122);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(120, 20);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Veterinarian ID:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(140, 166);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(82, 20);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "Visit Date:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(158, 210);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(60, 20);
+            this.label5.TabIndex = 4;
+            this.label5.Text = "Status:";
+            // 
+            // btnPnlCancel
+            // 
+            this.btnPnlCancel.Location = new System.Drawing.Point(119, 249);
+            this.btnPnlCancel.Name = "btnPnlCancel";
+            this.btnPnlCancel.Size = new System.Drawing.Size(103, 43);
+            this.btnPnlCancel.TabIndex = 5;
+            this.btnPnlCancel.Text = "Cancel";
+            this.btnPnlCancel.UseVisualStyleBackColor = true;
+            this.btnPnlCancel.Click += new System.EventHandler(this.btnPnlCancel_Click);
+            // 
+            // btnPnlSaveVisit
+            // 
+            this.btnPnlSaveVisit.Location = new System.Drawing.Point(258, 249);
+            this.btnPnlSaveVisit.Name = "btnPnlSaveVisit";
+            this.btnPnlSaveVisit.Size = new System.Drawing.Size(103, 43);
+            this.btnPnlSaveVisit.TabIndex = 6;
+            this.btnPnlSaveVisit.Text = "Save Visit";
+            this.btnPnlSaveVisit.UseVisualStyleBackColor = true;
+            this.btnPnlSaveVisit.Click += new System.EventHandler(this.btnPnlSaveVisit_Click);
+            // 
+            // lblPnlVisitID
+            // 
+            this.lblPnlVisitID.AutoSize = true;
+            this.lblPnlVisitID.Location = new System.Drawing.Point(224, 34);
+            this.lblPnlVisitID.Name = "lblPnlVisitID";
+            this.lblPnlVisitID.Size = new System.Drawing.Size(35, 20);
+            this.lblPnlVisitID.TabIndex = 7;
+            this.lblPnlVisitID.Text = "visit";
+            // 
+            // txtPnlCatID
+            // 
+            this.txtPnlCatID.Location = new System.Drawing.Point(222, 75);
+            this.txtPnlCatID.Name = "txtPnlCatID";
+            this.txtPnlCatID.Size = new System.Drawing.Size(100, 26);
+            this.txtPnlCatID.TabIndex = 8;
+            // 
+            // txtPnlStatus
+            // 
+            this.txtPnlStatus.Location = new System.Drawing.Point(222, 207);
+            this.txtPnlStatus.Name = "txtPnlStatus";
+            this.txtPnlStatus.Size = new System.Drawing.Size(100, 26);
+            this.txtPnlStatus.TabIndex = 9;
+            // 
+            // txtPnlVetID
+            // 
+            this.txtPnlVetID.Location = new System.Drawing.Point(222, 122);
+            this.txtPnlVetID.Name = "txtPnlVetID";
+            this.txtPnlVetID.Size = new System.Drawing.Size(100, 26);
+            this.txtPnlVetID.TabIndex = 10;
+            // 
+            // txtPnlVisitDate
+            // 
+            this.txtPnlVisitDate.Location = new System.Drawing.Point(222, 163);
+            this.txtPnlVisitDate.Name = "txtPnlVisitDate";
+            this.txtPnlVisitDate.Size = new System.Drawing.Size(100, 26);
+            this.txtPnlVisitDate.TabIndex = 11;
+            // 
             // VisitForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(701, 483);
+            this.Controls.Add(this.pnlVisit);
             this.Controls.Add(this.btnReturn);
             this.Controls.Add(this.btnDeleteVisit);
             this.Controls.Add(this.btnUpdateVisit);
@@ -222,6 +359,8 @@
             this.Controls.Add(this.lstVisits);
             this.Name = "VisitForm";
             this.Text = "Visit Maintenance";
+            this.pnlVisit.ResumeLayout(false);
+            this.pnlVisit.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -246,5 +385,18 @@
         private System.Windows.Forms.Button btnUpdateVisit;
         private System.Windows.Forms.Button btnDeleteVisit;
         private System.Windows.Forms.Button btnReturn;
+        private System.Windows.Forms.Panel pnlVisit;
+        private System.Windows.Forms.Button btnPnlSaveVisit;
+        private System.Windows.Forms.Button btnPnlCancel;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblPnlVisitNo;
+        private System.Windows.Forms.TextBox txtPnlVisitDate;
+        private System.Windows.Forms.TextBox txtPnlVetID;
+        private System.Windows.Forms.TextBox txtPnlStatus;
+        private System.Windows.Forms.TextBox txtPnlCatID;
+        private System.Windows.Forms.Label lblPnlVisitID;
     }
 }

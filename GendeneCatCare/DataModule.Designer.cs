@@ -394,6 +394,7 @@
                         new System.Data.Common.DataColumnMapping("VisitDate", "VisitDate"),
                         new System.Data.Common.DataColumnMapping("Status", "Status")})});
             this.daVisit.UpdateCommand = this.oleDbUpdateCommand5;
+            this.daVisit.RowUpdated += new System.Data.OleDb.OleDbRowUpdatedEventHandler(this.daVisit_RowUpdated);
             // 
             // oleDbSelectCommand6
             // 

@@ -171,5 +171,22 @@ namespace GendeneCatCare
 
             }
         }
+
+        private void daVisit_RowUpdated(object sender, OleDbRowUpdatedEventArgs e)
+        {
+            // Include a variable and a command to retrieve 
+            // the identity value from the Access database.
+            int newID = 0;
+            OleDbCommand idCMD = new OleDbCommand("SELECT @@IDENTITY", CtnGlendene);
+
+            if (e.StatementType == StatementType.Insert)
+            {
+                // Retrieve the identity value and 
+                // store it in the VisitID column.
+                newID = (int)idCMD.ExecuteScalar();
+                e.Row["VisitID"] = newID;
+
+            }
+        }
     }
 }
