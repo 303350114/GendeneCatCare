@@ -80,8 +80,6 @@ namespace GendeneCatCare
             resetPanelTreatment();
 
             lstBoxTreatments.Visible = false;
-            //lstBoxTreatments.Enabled = false;
-            //lstBoxTreatments.SelectedItem = null;
             btnDeleteTreatment.Enabled = false;
             btnNext.Enabled = false;
             btnPrevious.Enabled = false;
@@ -90,32 +88,6 @@ namespace GendeneCatCare
             lblUpdateTreatmentID.Visible = false;
             lblUpdateTreatmentNo.Visible = false;
             pnlTreatment.Show();
-        }
-
-        private void oldAddTreatmentMethod()
-        {
-            lblTreatmentID.Text = null;
-            DataRow newTreatmentRow = DM.dtTreatment.NewRow();
-
-            if ((txtDescription.Text == "") || (txtCost.Text == ""))
-            {
-                MessageBox.Show("You must type in a Treatment description and cost", "Error");
-
-            }
-            else
-            {
-                newTreatmentRow["Description"] = txtDescription.Text;
-                newTreatmentRow["Cost"] = Convert.ToDouble(txtCost.Text);
-                DM.dtTreatment.Rows.Add(newTreatmentRow);
-                DM.UpdateTreatment();
-
-                DM.refreshDs("Treatment");// refresh the data of DataSet DSGlendene
-
-                //Give the user a success message
-                MessageBox.Show("Treatment added successfully", "Success");
-            }
-
-            return;
         }
 
         private void btnDeleteTreatment_Click(object sender, EventArgs e)
@@ -153,8 +125,6 @@ namespace GendeneCatCare
             lblUpdateTreatmentID.Text = updateTreatmentRow["TreatmentID"].ToString();
 
             lstBoxTreatments.Visible = false;
-            //lstBoxTreatments.Enabled = false;
-            //lstBoxTreatments.SelectedItem = null;
             btnDeleteTreatment.Enabled = false;
             btnNext.Enabled = false;
             btnPrevious.Enabled = false;
@@ -163,27 +133,6 @@ namespace GendeneCatCare
             lblUpdateTreatmentID.Visible = true;
             lblUpdateTreatmentNo.Visible = true;
             pnlTreatment.Show();
-        }
-
-        private void oldUpdateTreatment()
-        {
-            DataRow updateTreatmentRow = DM.dtTreatment.Rows[currencyManager.Position];
-
-            if ((txtDescription.Text == "") || (txtCost.Text == ""))
-            {
-                MessageBox.Show("You must type in a Treatment description and cost", "Error");
-
-            }
-            else
-            {
-                updateTreatmentRow["Description"] = txtDescription.Text;
-                updateTreatmentRow["Cost"] = Convert.ToDouble(txtCost.Text);
-                currencyManager.EndCurrentEdit();
-
-                DM.UpdateTreatment();
-                MessageBox.Show("Treatment updated successfully", "Success");
-            }
-            return;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -205,9 +154,6 @@ namespace GendeneCatCare
 
         private void btnSaveTreatment_Click(object sender, EventArgs e)
         {
-            lblTreatmentID.Text = null;
-            DataRow newTreatmentRow = DM.dtTreatment.NewRow();
-
             if ((txtPnlDescription.Text == "") || (txtPnlCost.Text == ""))
             {
                 MessageBox.Show("You must type in a Treatment description and cost", "Error");
@@ -215,19 +161,33 @@ namespace GendeneCatCare
             }
             else
             {
-                try
+                DataRow treatmentRow;
+                if (lblUpdateTreatmentID.Text == null || lblUpdateTreatmentID.Text.Equals(""))
                 {
-                    newTreatmentRow["Description"] = txtPnlDescription.Text;
-                    newTreatmentRow["Cost"] = Convert.ToDouble(txtPnlCost.Text);
-                    DM.dtTreatment.Rows.Add(newTreatmentRow);
-                    DM.UpdateTreatment();
+                    treatmentRow = DM.dtTreatment.NewRow();
+
+                    treatmentRow["Description"] = txtPnlDescription.Text;
+                    treatmentRow["Cost"] = Convert.ToDouble(txtPnlCost.Text);
+
                     hidePnlAddTreatment(); // Hide the panal of add treatment
+                    //Give the user a success message
                     MessageBox.Show("Treatment added successfully", "Success");
                 }
-                catch (FormatException ex)
+                else
                 {
-                    MessageBox.Show("Please enter a number for cost", "Error");
-                }
+                    treatmentRow = DM.dtTreatment.Rows[currencyManager.Position];
+
+                    treatmentRow["Description"] = txtPnlDescription.Text;
+                    treatmentRow["Cost"] = Convert.ToDouble(txtPnlCost.Text);
+
+                    currencyManager.EndCurrentEdit();
+
+                    DM.UpdateTreatment();
+                    hidePnlAddTreatment(); // Hide the panal of add treatment
+                    //Give the user a success message
+                    MessageBox.Show("Treatment updated successfully", "Success");
+                }                   
+                
             }
             return;
 
