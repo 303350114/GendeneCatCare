@@ -28,10 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InvoiceForm));
             this.txtInvoices = new System.Windows.Forms.TextBox();
             this.btnPrintReport = new System.Windows.Forms.Button();
             this.btnDisplayReport = new System.Windows.Forms.Button();
             this.btnReturn = new System.Windows.Forms.Button();
+            this.prDoc = new System.Drawing.Printing.PrintDocument();
+            this.PreviewDlg = new System.Windows.Forms.PrintPreviewDialog();
             this.SuspendLayout();
             // 
             // txtInvoices
@@ -73,6 +76,21 @@
             this.btnReturn.UseVisualStyleBackColor = true;
             this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
             // 
+            // prDoc
+            // 
+            this.prDoc.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.prDoc_PrintPage);
+            // 
+            // PreviewDlg
+            // 
+            this.PreviewDlg.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            this.PreviewDlg.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            this.PreviewDlg.ClientSize = new System.Drawing.Size(400, 300);
+            this.PreviewDlg.Document = this.prDoc;
+            this.PreviewDlg.Enabled = true;
+            this.PreviewDlg.Icon = ((System.Drawing.Icon)(resources.GetObject("PreviewDlg.Icon")));
+            this.PreviewDlg.Name = "PreviewDlg";
+            this.PreviewDlg.Visible = false;
+            // 
             // InvoiceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -95,5 +113,7 @@
         private System.Windows.Forms.Button btnPrintReport;
         private System.Windows.Forms.Button btnDisplayReport;
         private System.Windows.Forms.Button btnReturn;
+        private System.Drawing.Printing.PrintDocument prDoc;
+        private System.Windows.Forms.PrintPreviewDialog PreviewDlg;
     }
 }
