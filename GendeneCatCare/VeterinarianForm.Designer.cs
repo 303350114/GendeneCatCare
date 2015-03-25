@@ -43,6 +43,18 @@
             this.txtLastName = new System.Windows.Forms.TextBox();
             this.txtFirstName = new System.Windows.Forms.TextBox();
             this.txtRate = new System.Windows.Forms.TextBox();
+            this.pnlVeterinarian = new System.Windows.Forms.Panel();
+            this.btnPnlSaveVet = new System.Windows.Forms.Button();
+            this.btnPnlCancel = new System.Windows.Forms.Button();
+            this.txtPnlRate = new System.Windows.Forms.TextBox();
+            this.txtPnlFirstName = new System.Windows.Forms.TextBox();
+            this.txtPnlLastName = new System.Windows.Forms.TextBox();
+            this.lblPnlRate = new System.Windows.Forms.Label();
+            this.lblPnlFirstName = new System.Windows.Forms.Label();
+            this.lblPnlLastName = new System.Windows.Forms.Label();
+            this.lblPnlVeterinarianID = new System.Windows.Forms.Label();
+            this.lblPnlVeterinarianNo = new System.Windows.Forms.Label();
+            this.pnlVeterinarian.SuspendLayout();
             this.SuspendLayout();
             // 
             // lstVeterinarians
@@ -180,11 +192,116 @@
             this.txtRate.Size = new System.Drawing.Size(70, 26);
             this.txtRate.TabIndex = 14;
             // 
+            // pnlVeterinarian
+            // 
+            this.pnlVeterinarian.Controls.Add(this.btnPnlSaveVet);
+            this.pnlVeterinarian.Controls.Add(this.btnPnlCancel);
+            this.pnlVeterinarian.Controls.Add(this.txtPnlRate);
+            this.pnlVeterinarian.Controls.Add(this.txtPnlFirstName);
+            this.pnlVeterinarian.Controls.Add(this.txtPnlLastName);
+            this.pnlVeterinarian.Controls.Add(this.lblPnlRate);
+            this.pnlVeterinarian.Controls.Add(this.lblPnlFirstName);
+            this.pnlVeterinarian.Controls.Add(this.lblPnlLastName);
+            this.pnlVeterinarian.Controls.Add(this.lblPnlVeterinarianID);
+            this.pnlVeterinarian.Controls.Add(this.lblPnlVeterinarianNo);
+            this.pnlVeterinarian.Location = new System.Drawing.Point(187, 61);
+            this.pnlVeterinarian.Name = "pnlVeterinarian";
+            this.pnlVeterinarian.Size = new System.Drawing.Size(447, 257);
+            this.pnlVeterinarian.TabIndex = 15;
+            this.pnlVeterinarian.Visible = false;
+            // 
+            // btnPnlSaveVet
+            // 
+            this.btnPnlSaveVet.Location = new System.Drawing.Point(234, 211);
+            this.btnPnlSaveVet.Name = "btnPnlSaveVet";
+            this.btnPnlSaveVet.Size = new System.Drawing.Size(152, 33);
+            this.btnPnlSaveVet.TabIndex = 9;
+            this.btnPnlSaveVet.Text = "Save Veterinarian";
+            this.btnPnlSaveVet.UseVisualStyleBackColor = true;
+            this.btnPnlSaveVet.Click += new System.EventHandler(this.btnPnlSaveVet_Click);
+            // 
+            // btnPnlCancel
+            // 
+            this.btnPnlCancel.Location = new System.Drawing.Point(62, 211);
+            this.btnPnlCancel.Name = "btnPnlCancel";
+            this.btnPnlCancel.Size = new System.Drawing.Size(152, 33);
+            this.btnPnlCancel.TabIndex = 8;
+            this.btnPnlCancel.Text = "Cancel";
+            this.btnPnlCancel.UseVisualStyleBackColor = true;
+            this.btnPnlCancel.Click += new System.EventHandler(this.btnPnlCancel_Click);
+            // 
+            // txtPnlRate
+            // 
+            this.txtPnlRate.Location = new System.Drawing.Point(188, 163);
+            this.txtPnlRate.Name = "txtPnlRate";
+            this.txtPnlRate.Size = new System.Drawing.Size(100, 26);
+            this.txtPnlRate.TabIndex = 7;
+            // 
+            // txtPnlFirstName
+            // 
+            this.txtPnlFirstName.Location = new System.Drawing.Point(188, 120);
+            this.txtPnlFirstName.Name = "txtPnlFirstName";
+            this.txtPnlFirstName.Size = new System.Drawing.Size(100, 26);
+            this.txtPnlFirstName.TabIndex = 6;
+            // 
+            // txtPnlLastName
+            // 
+            this.txtPnlLastName.Location = new System.Drawing.Point(188, 67);
+            this.txtPnlLastName.Name = "txtPnlLastName";
+            this.txtPnlLastName.Size = new System.Drawing.Size(100, 26);
+            this.txtPnlLastName.TabIndex = 5;
+            // 
+            // lblPnlRate
+            // 
+            this.lblPnlRate.AutoSize = true;
+            this.lblPnlRate.Location = new System.Drawing.Point(134, 174);
+            this.lblPnlRate.Name = "lblPnlRate";
+            this.lblPnlRate.Size = new System.Drawing.Size(48, 20);
+            this.lblPnlRate.TabIndex = 4;
+            this.lblPnlRate.Text = "Rate:";
+            // 
+            // lblPnlFirstName
+            // 
+            this.lblPnlFirstName.AutoSize = true;
+            this.lblPnlFirstName.Location = new System.Drawing.Point(92, 122);
+            this.lblPnlFirstName.Name = "lblPnlFirstName";
+            this.lblPnlFirstName.Size = new System.Drawing.Size(90, 20);
+            this.lblPnlFirstName.TabIndex = 3;
+            this.lblPnlFirstName.Text = "First Name:";
+            // 
+            // lblPnlLastName
+            // 
+            this.lblPnlLastName.AutoSize = true;
+            this.lblPnlLastName.Location = new System.Drawing.Point(92, 70);
+            this.lblPnlLastName.Name = "lblPnlLastName";
+            this.lblPnlLastName.Size = new System.Drawing.Size(90, 20);
+            this.lblPnlLastName.TabIndex = 2;
+            this.lblPnlLastName.Text = "Last Name:";
+            // 
+            // lblPnlVeterinarianID
+            // 
+            this.lblPnlVeterinarianID.AutoSize = true;
+            this.lblPnlVeterinarianID.Location = new System.Drawing.Point(184, 18);
+            this.lblPnlVeterinarianID.Name = "lblPnlVeterinarianID";
+            this.lblPnlVeterinarianID.Size = new System.Drawing.Size(33, 20);
+            this.lblPnlVeterinarianID.TabIndex = 1;
+            this.lblPnlVeterinarianID.Text = "null";
+            // 
+            // lblPnlVeterinarianNo
+            // 
+            this.lblPnlVeterinarianNo.AutoSize = true;
+            this.lblPnlVeterinarianNo.Location = new System.Drawing.Point(62, 18);
+            this.lblPnlVeterinarianNo.Name = "lblPnlVeterinarianNo";
+            this.lblPnlVeterinarianNo.Size = new System.Drawing.Size(120, 20);
+            this.lblPnlVeterinarianNo.TabIndex = 0;
+            this.lblPnlVeterinarianNo.Text = "Veterinarian ID:";
+            // 
             // VeterinarianForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(826, 547);
+            this.Controls.Add(this.pnlVeterinarian);
             this.Controls.Add(this.txtRate);
             this.Controls.Add(this.txtFirstName);
             this.Controls.Add(this.txtLastName);
@@ -202,6 +319,8 @@
             this.Controls.Add(this.lstVeterinarians);
             this.Name = "VeterinarianForm";
             this.Text = "Veterinarian Maintenance";
+            this.pnlVeterinarian.ResumeLayout(false);
+            this.pnlVeterinarian.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -224,5 +343,16 @@
         private System.Windows.Forms.TextBox txtLastName;
         private System.Windows.Forms.TextBox txtFirstName;
         private System.Windows.Forms.TextBox txtRate;
+        private System.Windows.Forms.Panel pnlVeterinarian;
+        private System.Windows.Forms.Button btnPnlSaveVet;
+        private System.Windows.Forms.Button btnPnlCancel;
+        private System.Windows.Forms.TextBox txtPnlRate;
+        private System.Windows.Forms.TextBox txtPnlFirstName;
+        private System.Windows.Forms.TextBox txtPnlLastName;
+        private System.Windows.Forms.Label lblPnlRate;
+        private System.Windows.Forms.Label lblPnlFirstName;
+        private System.Windows.Forms.Label lblPnlLastName;
+        private System.Windows.Forms.Label lblPnlVeterinarianID;
+        private System.Windows.Forms.Label lblPnlVeterinarianNo;
     }
 }

@@ -146,6 +146,7 @@
                         new System.Data.Common.DataColumnMapping("Neutered", "Neutered"),
                         new System.Data.Common.DataColumnMapping("OwnerID", "OwnerID")})});
             this.daCat.UpdateCommand = this.oleDbUpdateCommand1;
+            this.daCat.RowUpdated += new System.Data.OleDb.OleDbRowUpdatedEventHandler(this.daCat_RowUpdated);
             // 
             // oleDbSelectCommand2
             // 
@@ -218,6 +219,7 @@
                         new System.Data.Common.DataColumnMapping("Suburb", "Suburb"),
                         new System.Data.Common.DataColumnMapping("PhoneNumber", "PhoneNumber")})});
             this.daOwner.UpdateCommand = this.oleDbUpdateCommand2;
+            this.daOwner.RowUpdated += new System.Data.OleDb.OleDbRowUpdatedEventHandler(this.daOwner_RowUpdated);
             // 
             // oleDbSelectCommand3
             // 
@@ -329,6 +331,7 @@
                         new System.Data.Common.DataColumnMapping("FirstName", "FirstName"),
                         new System.Data.Common.DataColumnMapping("Rate", "Rate")})});
             this.daVeterinarian.UpdateCommand = this.oleDbUpdateCommand4;
+            this.daVeterinarian.RowUpdated += new System.Data.OleDb.OleDbRowUpdatedEventHandler(this.daVeterinarian_RowUpdated);
             // 
             // oleDbSelectCommand5
             // 

@@ -47,6 +47,22 @@
             this.btnUpdateOwner = new System.Windows.Forms.Button();
             this.btnDeleteOwner = new System.Windows.Forms.Button();
             this.btnReturn = new System.Windows.Forms.Button();
+            this.pnlOwner = new System.Windows.Forms.Panel();
+            this.lblPnlOwnerNo = new System.Windows.Forms.Label();
+            this.lblPnlOwnerID = new System.Windows.Forms.Label();
+            this.lblPnlLastName = new System.Windows.Forms.Label();
+            this.lblPnlFirstName = new System.Windows.Forms.Label();
+            this.lblPnlStreetAddress = new System.Windows.Forms.Label();
+            this.lblPnlSuburb = new System.Windows.Forms.Label();
+            this.txtPnlLastName = new System.Windows.Forms.TextBox();
+            this.txtPnlFirstName = new System.Windows.Forms.TextBox();
+            this.txtPnlStreetAddress = new System.Windows.Forms.TextBox();
+            this.txtPnlSuburb = new System.Windows.Forms.TextBox();
+            this.lblPnlPhoneNumber = new System.Windows.Forms.Label();
+            this.txtPnlPhoneNumber = new System.Windows.Forms.TextBox();
+            this.btnPnlCancel = new System.Windows.Forms.Button();
+            this.btnPnlSaveOwner = new System.Windows.Forms.Button();
+            this.pnlOwner.SuspendLayout();
             this.SuspendLayout();
             // 
             // lstOwners
@@ -216,11 +232,152 @@
             this.btnReturn.UseVisualStyleBackColor = true;
             this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
             // 
+            // pnlOwner
+            // 
+            this.pnlOwner.Controls.Add(this.btnPnlSaveOwner);
+            this.pnlOwner.Controls.Add(this.btnPnlCancel);
+            this.pnlOwner.Controls.Add(this.txtPnlPhoneNumber);
+            this.pnlOwner.Controls.Add(this.lblPnlPhoneNumber);
+            this.pnlOwner.Controls.Add(this.txtPnlSuburb);
+            this.pnlOwner.Controls.Add(this.txtPnlStreetAddress);
+            this.pnlOwner.Controls.Add(this.txtPnlFirstName);
+            this.pnlOwner.Controls.Add(this.txtPnlLastName);
+            this.pnlOwner.Controls.Add(this.lblPnlSuburb);
+            this.pnlOwner.Controls.Add(this.lblPnlStreetAddress);
+            this.pnlOwner.Controls.Add(this.lblPnlFirstName);
+            this.pnlOwner.Controls.Add(this.lblPnlLastName);
+            this.pnlOwner.Controls.Add(this.lblPnlOwnerID);
+            this.pnlOwner.Controls.Add(this.lblPnlOwnerNo);
+            this.pnlOwner.Location = new System.Drawing.Point(140, 37);
+            this.pnlOwner.Name = "pnlOwner";
+            this.pnlOwner.Size = new System.Drawing.Size(504, 332);
+            this.pnlOwner.TabIndex = 19;
+            this.pnlOwner.Visible = false;
+            // 
+            // lblPnlOwnerNo
+            // 
+            this.lblPnlOwnerNo.AutoSize = true;
+            this.lblPnlOwnerNo.Location = new System.Drawing.Point(134, 21);
+            this.lblPnlOwnerNo.Name = "lblPnlOwnerNo";
+            this.lblPnlOwnerNo.Size = new System.Drawing.Size(80, 20);
+            this.lblPnlOwnerNo.TabIndex = 0;
+            this.lblPnlOwnerNo.Text = "Owner ID:";
+            // 
+            // lblPnlOwnerID
+            // 
+            this.lblPnlOwnerID.AutoSize = true;
+            this.lblPnlOwnerID.Location = new System.Drawing.Point(209, 21);
+            this.lblPnlOwnerID.Name = "lblPnlOwnerID";
+            this.lblPnlOwnerID.Size = new System.Drawing.Size(33, 20);
+            this.lblPnlOwnerID.TabIndex = 1;
+            this.lblPnlOwnerID.Text = "null";
+            // 
+            // lblPnlLastName
+            // 
+            this.lblPnlLastName.AutoSize = true;
+            this.lblPnlLastName.Location = new System.Drawing.Point(124, 65);
+            this.lblPnlLastName.Name = "lblPnlLastName";
+            this.lblPnlLastName.Size = new System.Drawing.Size(90, 20);
+            this.lblPnlLastName.TabIndex = 2;
+            this.lblPnlLastName.Text = "Last Name:";
+            // 
+            // lblPnlFirstName
+            // 
+            this.lblPnlFirstName.AutoSize = true;
+            this.lblPnlFirstName.Location = new System.Drawing.Point(124, 109);
+            this.lblPnlFirstName.Name = "lblPnlFirstName";
+            this.lblPnlFirstName.Size = new System.Drawing.Size(90, 20);
+            this.lblPnlFirstName.TabIndex = 3;
+            this.lblPnlFirstName.Text = "First Name:";
+            // 
+            // lblPnlStreetAddress
+            // 
+            this.lblPnlStreetAddress.AutoSize = true;
+            this.lblPnlStreetAddress.Location = new System.Drawing.Point(94, 153);
+            this.lblPnlStreetAddress.Name = "lblPnlStreetAddress";
+            this.lblPnlStreetAddress.Size = new System.Drawing.Size(120, 20);
+            this.lblPnlStreetAddress.TabIndex = 4;
+            this.lblPnlStreetAddress.Text = "Street Address:";
+            // 
+            // lblPnlSuburb
+            // 
+            this.lblPnlSuburb.AutoSize = true;
+            this.lblPnlSuburb.Location = new System.Drawing.Point(149, 197);
+            this.lblPnlSuburb.Name = "lblPnlSuburb";
+            this.lblPnlSuburb.Size = new System.Drawing.Size(65, 20);
+            this.lblPnlSuburb.TabIndex = 5;
+            this.lblPnlSuburb.Text = "Suburb:";
+            // 
+            // txtPnlLastName
+            // 
+            this.txtPnlLastName.Location = new System.Drawing.Point(213, 62);
+            this.txtPnlLastName.Name = "txtPnlLastName";
+            this.txtPnlLastName.Size = new System.Drawing.Size(128, 26);
+            this.txtPnlLastName.TabIndex = 6;
+            // 
+            // txtPnlFirstName
+            // 
+            this.txtPnlFirstName.Location = new System.Drawing.Point(213, 106);
+            this.txtPnlFirstName.Name = "txtPnlFirstName";
+            this.txtPnlFirstName.Size = new System.Drawing.Size(128, 26);
+            this.txtPnlFirstName.TabIndex = 7;
+            // 
+            // txtPnlStreetAddress
+            // 
+            this.txtPnlStreetAddress.Location = new System.Drawing.Point(213, 150);
+            this.txtPnlStreetAddress.Name = "txtPnlStreetAddress";
+            this.txtPnlStreetAddress.Size = new System.Drawing.Size(266, 26);
+            this.txtPnlStreetAddress.TabIndex = 8;
+            // 
+            // txtPnlSuburb
+            // 
+            this.txtPnlSuburb.Location = new System.Drawing.Point(213, 194);
+            this.txtPnlSuburb.Name = "txtPnlSuburb";
+            this.txtPnlSuburb.Size = new System.Drawing.Size(128, 26);
+            this.txtPnlSuburb.TabIndex = 9;
+            // 
+            // lblPnlPhoneNumber
+            // 
+            this.lblPnlPhoneNumber.AutoSize = true;
+            this.lblPnlPhoneNumber.Location = new System.Drawing.Point(95, 241);
+            this.lblPnlPhoneNumber.Name = "lblPnlPhoneNumber";
+            this.lblPnlPhoneNumber.Size = new System.Drawing.Size(119, 20);
+            this.lblPnlPhoneNumber.TabIndex = 10;
+            this.lblPnlPhoneNumber.Text = "Phone Number:";
+            // 
+            // txtPnlPhoneNumber
+            // 
+            this.txtPnlPhoneNumber.Location = new System.Drawing.Point(213, 239);
+            this.txtPnlPhoneNumber.Name = "txtPnlPhoneNumber";
+            this.txtPnlPhoneNumber.Size = new System.Drawing.Size(128, 26);
+            this.txtPnlPhoneNumber.TabIndex = 11;
+            // 
+            // btnPnlCancel
+            // 
+            this.btnPnlCancel.Location = new System.Drawing.Point(133, 284);
+            this.btnPnlCancel.Name = "btnPnlCancel";
+            this.btnPnlCancel.Size = new System.Drawing.Size(119, 30);
+            this.btnPnlCancel.TabIndex = 12;
+            this.btnPnlCancel.Text = "Cancel";
+            this.btnPnlCancel.UseVisualStyleBackColor = true;
+            this.btnPnlCancel.Click += new System.EventHandler(this.btnPnlCancel_Click);
+            // 
+            // btnPnlSaveOwner
+            // 
+            this.btnPnlSaveOwner.Location = new System.Drawing.Point(278, 284);
+            this.btnPnlSaveOwner.Name = "btnPnlSaveOwner";
+            this.btnPnlSaveOwner.Size = new System.Drawing.Size(119, 30);
+            this.btnPnlSaveOwner.TabIndex = 13;
+            this.btnPnlSaveOwner.Text = "Save Owner";
+            this.btnPnlSaveOwner.UseVisualStyleBackColor = true;
+            this.btnPnlSaveOwner.Click += new System.EventHandler(this.btnPnlSaveOwner_Click);
+            // 
             // OwnerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(837, 569);
+            this.Controls.Add(this.pnlOwner);
             this.Controls.Add(this.btnReturn);
             this.Controls.Add(this.btnDeleteOwner);
             this.Controls.Add(this.btnUpdateOwner);
@@ -242,6 +399,8 @@
             this.Controls.Add(this.lstOwners);
             this.Name = "OwnerForm";
             this.Text = "Owner Maintenance";
+            this.pnlOwner.ResumeLayout(false);
+            this.pnlOwner.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -268,5 +427,20 @@
         private System.Windows.Forms.Button btnUpdateOwner;
         private System.Windows.Forms.Button btnDeleteOwner;
         private System.Windows.Forms.Button btnReturn;
+        private System.Windows.Forms.Panel pnlOwner;
+        private System.Windows.Forms.TextBox txtPnlPhoneNumber;
+        private System.Windows.Forms.Label lblPnlPhoneNumber;
+        private System.Windows.Forms.TextBox txtPnlSuburb;
+        private System.Windows.Forms.TextBox txtPnlStreetAddress;
+        private System.Windows.Forms.TextBox txtPnlFirstName;
+        private System.Windows.Forms.TextBox txtPnlLastName;
+        private System.Windows.Forms.Label lblPnlSuburb;
+        private System.Windows.Forms.Label lblPnlStreetAddress;
+        private System.Windows.Forms.Label lblPnlFirstName;
+        private System.Windows.Forms.Label lblPnlLastName;
+        private System.Windows.Forms.Label lblPnlOwnerID;
+        private System.Windows.Forms.Label lblPnlOwnerNo;
+        private System.Windows.Forms.Button btnPnlSaveOwner;
+        private System.Windows.Forms.Button btnPnlCancel;
     }
 }

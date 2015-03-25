@@ -33,7 +33,12 @@ namespace GendeneCatCare
             lblVeterinarianID.DataBindings.Add("Text", DM.DSGlendene, "Veterinarian.VeterinarianID"); 
             txtLastName.DataBindings.Add("Text", DM.DSGlendene, "Veterinarian.LastName"); 
             txtFirstName.DataBindings.Add("Text", DM.DSGlendene, "Veterinarian.FirstName"); 
-            txtRate.DataBindings.Add("Text", DM.DSGlendene, "Veterinarian.Rate"); 
+            txtRate.DataBindings.Add("Text", DM.DSGlendene, "Veterinarian.Rate");
+
+            txtLastName.Enabled = false;
+            txtFirstName.Enabled = false;
+            txtRate.Enabled = false;
+
             lstVeterinarians.DataSource = DM.DSGlendene; 
             lstVeterinarians.DisplayMember = "Veterinarian.LastName"; 
             lstVeterinarians.ValueMember = "Veterinarian.LastName"; 
@@ -64,28 +69,14 @@ namespace GendeneCatCare
 
         private void btnAddVeterinarian_Click(object sender, EventArgs e)
         {
-            //Create a new row that the variables will be added into
-            DataRow newVeterinarianRow = DM.dtVeterinarian.NewRow();
+            resetPanelElementsVal();
 
-            //If any of the text areas are empty then do not write data and return
-            if ((txtLastName.Text == "") || (txtFirstName.Text == "") || (txtRate.Text == ""))
-            {
-                MessageBox.Show("You must enter a value for each of the text fields", "Error");
-            }
-            else
-            {
-                newVeterinarianRow["LastName"] = txtLastName.Text;
-                newVeterinarianRow["FirstName"] = txtFirstName.Text;
-                newVeterinarianRow["Rate"] = Convert.ToDouble(txtRate.Text);
-                //Add the new row to the Table
-                DM.dtVeterinarian.Rows.Add(newVeterinarianRow);
-                DM.UpdateVeterinarian();
+            disableVetFormElements();
 
-                DM.refreshDs("Veterinarian");
-                //Give the user a success message
-                MessageBox.Show("Veterinarian added successfully", "Success");
-            }
-            return;
+            lblPnlVeterinarianNo.Visible = false;
+            lblPnlVeterinarianID.Visible = false;
+
+            pnlVeterinarian.Show();
         }
 
         private void btnDeleteVeterinarian_Click(object sender, EventArgs e)
@@ -108,25 +99,103 @@ namespace GendeneCatCare
 
         private void btnUpdateVeterinarian_Click(object sender, EventArgs e)
         {
+            disableVetFormElements();
+            resetPanelElementsVal();
+            lblPnlVeterinarianNo.Visible = true;
+            lblPnlVeterinarianID.Visible = true;
+
             DataRow updateVeterinarianRow = DM.dtVeterinarian.Rows[currencyManager.Position];
-            if ((txtLastName.Text == "") || (txtFirstName.Text == "") || (txtRate.Text == ""))
+            lblPnlVeterinarianID.Text = updateVeterinarianRow["VeterinarianID"].ToString();
+            txtPnlLastName.Text = updateVeterinarianRow["LastName"].ToString();
+            txtPnlFirstName.Text = updateVeterinarianRow["FirstName"].ToString();
+            txtPnlRate.Text = updateVeterinarianRow["Rate"].ToString();
+
+            pnlVeterinarian.Show();
+        }
+
+        private void btnPnlCancel_Click(object sender, EventArgs e)
+        {
+            enableVetFormElements();
+            pnlVeterinarian.Hide();
+        }
+
+        private void btnPnlSaveVet_Click(object sender, EventArgs e)
+        {
+            //If any of the text areas are empty then do not write data and return
+            if ((txtPnlLastName.Text == "") || (txtPnlFirstName.Text == "") || (txtPnlRate.Text == ""))
             {
                 MessageBox.Show("You must enter a value for each of the text fields", "Error");
-                return;
             }
             else
             {
-                //Add the text areas
-                updateVeterinarianRow["LastName"] = txtLastName.Text;
-                updateVeterinarianRow["FirstName"] = txtFirstName.Text;
-                updateVeterinarianRow["Rate"] = Convert.ToDouble(txtRate.Text);
-                //Update the database
-                currencyManager.EndCurrentEdit();
-                DM.UpdateVeterinarian();
-                //Give the user a success message
-                MessageBox.Show("Veterinarian updated successfully", "Success");
+                DataRow veterinarianRow;
+
+                if (lblPnlVeterinarianID.Text == null || lblPnlVeterinarianID.Text.Equals(""))
+                {
+                    //Create a new row that the variables will be added into
+                    veterinarianRow = DM.dtVeterinarian.NewRow();
+                    veterinarianRow["LastName"] = txtPnlLastName.Text;
+                    veterinarianRow["FirstName"] = txtPnlFirstName.Text;
+                    veterinarianRow["Rate"] = Convert.ToDouble(txtPnlRate.Text);
+                    //Add the new row to the Table
+                    DM.dtVeterinarian.Rows.Add(veterinarianRow);
+                    DM.UpdateVeterinarian();
+
+                    enableVetFormElements();
+                    pnlVeterinarian.Hide();
+
+                    //Give the user a success message
+                    MessageBox.Show("Veterinarian added successfully", "Success");
+                }
+                else
+                {
+                    veterinarianRow = DM.dtVeterinarian.Rows[currencyManager.Position];
+                    //Add the text areas
+                    veterinarianRow["LastName"] = txtPnlLastName.Text;
+                    veterinarianRow["FirstName"] = txtPnlFirstName.Text;
+                    veterinarianRow["Rate"] = Convert.ToDouble(txtPnlRate.Text);
+                    //Update the database
+                    currencyManager.EndCurrentEdit();
+                    DM.UpdateVeterinarian();
+
+                    enableVetFormElements();
+                    pnlVeterinarian.Hide();
+
+                    //Give the user a success message
+                    MessageBox.Show("Veterinarian updated successfully", "Success");
+                }
             }
-            return;
+        }
+
+        private void disableVetFormElements()
+        {
+            lstVeterinarians.Visible = false;
+            btnPrevious.Enabled = false;
+            btnNext.Enabled = false;
+            btnAddVeterinarian.Enabled = false;
+            btnUpdateVeterinarian.Enabled = false;
+            btnDeleteVeterinarian.Enabled = false;
+            btnReturn.Enabled = false;
+
+        }
+
+        private void enableVetFormElements()
+        {
+            lstVeterinarians.Visible = true;
+            btnPrevious.Enabled = true;
+            btnNext.Enabled = true;
+            btnAddVeterinarian.Enabled = true;
+            btnUpdateVeterinarian.Enabled = true;
+            btnDeleteVeterinarian.Enabled = true;
+            btnReturn.Enabled = true;
+        }
+
+        private void resetPanelElementsVal()
+        {
+            lblPnlVeterinarianID.Text = null;
+            txtPnlRate.Text = "";
+            txtPnlFirstName.Text = "";
+            txtPnlLastName.Text = "";
         }
 
     }

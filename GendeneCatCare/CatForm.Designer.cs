@@ -49,7 +49,24 @@
             this.btnUpdateCat = new System.Windows.Forms.Button();
             this.btnDeleteCat = new System.Windows.Forms.Button();
             this.btnReturn = new System.Windows.Forms.Button();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.pnlCat = new System.Windows.Forms.Panel();
+            this.lblPnlCatNo = new System.Windows.Forms.Label();
+            this.lblPnlCatID = new System.Windows.Forms.Label();
+            this.lblPnlCatName = new System.Windows.Forms.Label();
+            this.lblPnlBreed = new System.Windows.Forms.Label();
+            this.lblPnlGender = new System.Windows.Forms.Label();
+            this.lblPnlDOB = new System.Windows.Forms.Label();
+            this.lblPnlNeutered = new System.Windows.Forms.Label();
+            this.lblPnlOwnerID = new System.Windows.Forms.Label();
+            this.txtPnlCatName = new System.Windows.Forms.TextBox();
+            this.txtPnlBreed = new System.Windows.Forms.TextBox();
+            this.txtPnlGender = new System.Windows.Forms.TextBox();
+            this.txtPnlDOB = new System.Windows.Forms.TextBox();
+            this.txtPnlNeutered = new System.Windows.Forms.TextBox();
+            this.txtPnlOwnerID = new System.Windows.Forms.TextBox();
+            this.btnPnlCancel = new System.Windows.Forms.Button();
+            this.btnPnlSaveCat = new System.Windows.Forms.Button();
+            this.pnlCat.SuspendLayout();
             this.SuspendLayout();
             // 
             // lstCats
@@ -160,7 +177,7 @@
             // 
             this.txtDateOfBirth.Location = new System.Drawing.Point(476, 249);
             this.txtDateOfBirth.Name = "txtDateOfBirth";
-            this.txtDateOfBirth.Size = new System.Drawing.Size(100, 26);
+            this.txtDateOfBirth.Size = new System.Drawing.Size(155, 26);
             this.txtDateOfBirth.TabIndex = 12;
             // 
             // lblNeutered
@@ -235,19 +252,170 @@
             this.btnReturn.UseVisualStyleBackColor = true;
             this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
             // 
-            // dateTimePicker1
+            // pnlCat
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(583, 245);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 26);
-            this.dateTimePicker1.TabIndex = 21;
+            this.pnlCat.Controls.Add(this.btnPnlSaveCat);
+            this.pnlCat.Controls.Add(this.btnPnlCancel);
+            this.pnlCat.Controls.Add(this.txtPnlOwnerID);
+            this.pnlCat.Controls.Add(this.txtPnlNeutered);
+            this.pnlCat.Controls.Add(this.txtPnlDOB);
+            this.pnlCat.Controls.Add(this.txtPnlGender);
+            this.pnlCat.Controls.Add(this.txtPnlBreed);
+            this.pnlCat.Controls.Add(this.txtPnlCatName);
+            this.pnlCat.Controls.Add(this.lblPnlOwnerID);
+            this.pnlCat.Controls.Add(this.lblPnlNeutered);
+            this.pnlCat.Controls.Add(this.lblPnlDOB);
+            this.pnlCat.Controls.Add(this.lblPnlGender);
+            this.pnlCat.Controls.Add(this.lblPnlBreed);
+            this.pnlCat.Controls.Add(this.lblPnlCatName);
+            this.pnlCat.Controls.Add(this.lblPnlCatID);
+            this.pnlCat.Controls.Add(this.lblPnlCatNo);
+            this.pnlCat.Location = new System.Drawing.Point(140, 32);
+            this.pnlCat.Name = "pnlCat";
+            this.pnlCat.Size = new System.Drawing.Size(491, 373);
+            this.pnlCat.TabIndex = 21;
+            this.pnlCat.Visible = false;
+            // 
+            // lblPnlCatNo
+            // 
+            this.lblPnlCatNo.AutoSize = true;
+            this.lblPnlCatNo.Location = new System.Drawing.Point(159, 10);
+            this.lblPnlCatNo.Name = "lblPnlCatNo";
+            this.lblPnlCatNo.Size = new System.Drawing.Size(59, 20);
+            this.lblPnlCatNo.TabIndex = 0;
+            this.lblPnlCatNo.Text = "Cat ID:";
+            // 
+            // lblPnlCatID
+            // 
+            this.lblPnlCatID.AutoSize = true;
+            this.lblPnlCatID.Location = new System.Drawing.Point(220, 10);
+            this.lblPnlCatID.Name = "lblPnlCatID";
+            this.lblPnlCatID.Size = new System.Drawing.Size(33, 20);
+            this.lblPnlCatID.TabIndex = 1;
+            this.lblPnlCatID.Text = "null";
+            // 
+            // lblPnlCatName
+            // 
+            this.lblPnlCatName.AutoSize = true;
+            this.lblPnlCatName.Location = new System.Drawing.Point(134, 54);
+            this.lblPnlCatName.Name = "lblPnlCatName";
+            this.lblPnlCatName.Size = new System.Drawing.Size(84, 20);
+            this.lblPnlCatName.TabIndex = 2;
+            this.lblPnlCatName.Text = "Cat Name:";
+            // 
+            // lblPnlBreed
+            // 
+            this.lblPnlBreed.AutoSize = true;
+            this.lblPnlBreed.Location = new System.Drawing.Point(162, 98);
+            this.lblPnlBreed.Name = "lblPnlBreed";
+            this.lblPnlBreed.Size = new System.Drawing.Size(56, 20);
+            this.lblPnlBreed.TabIndex = 3;
+            this.lblPnlBreed.Text = "Breed:";
+            // 
+            // lblPnlGender
+            // 
+            this.lblPnlGender.AutoSize = true;
+            this.lblPnlGender.Location = new System.Drawing.Point(151, 142);
+            this.lblPnlGender.Name = "lblPnlGender";
+            this.lblPnlGender.Size = new System.Drawing.Size(67, 20);
+            this.lblPnlGender.TabIndex = 4;
+            this.lblPnlGender.Text = "Gender:";
+            // 
+            // lblPnlDOB
+            // 
+            this.lblPnlDOB.AutoSize = true;
+            this.lblPnlDOB.Location = new System.Drawing.Point(112, 186);
+            this.lblPnlDOB.Name = "lblPnlDOB";
+            this.lblPnlDOB.Size = new System.Drawing.Size(106, 20);
+            this.lblPnlDOB.TabIndex = 5;
+            this.lblPnlDOB.Text = "Date Of Birth:";
+            // 
+            // lblPnlNeutered
+            // 
+            this.lblPnlNeutered.AutoSize = true;
+            this.lblPnlNeutered.Location = new System.Drawing.Point(139, 230);
+            this.lblPnlNeutered.Name = "lblPnlNeutered";
+            this.lblPnlNeutered.Size = new System.Drawing.Size(79, 20);
+            this.lblPnlNeutered.TabIndex = 6;
+            this.lblPnlNeutered.Text = "Neutered:";
+            // 
+            // lblPnlOwnerID
+            // 
+            this.lblPnlOwnerID.AutoSize = true;
+            this.lblPnlOwnerID.Location = new System.Drawing.Point(138, 274);
+            this.lblPnlOwnerID.Name = "lblPnlOwnerID";
+            this.lblPnlOwnerID.Size = new System.Drawing.Size(80, 20);
+            this.lblPnlOwnerID.TabIndex = 7;
+            this.lblPnlOwnerID.Text = "Owner ID:";
+            // 
+            // txtPnlCatName
+            // 
+            this.txtPnlCatName.Location = new System.Drawing.Point(224, 51);
+            this.txtPnlCatName.Name = "txtPnlCatName";
+            this.txtPnlCatName.Size = new System.Drawing.Size(164, 26);
+            this.txtPnlCatName.TabIndex = 8;
+            // 
+            // txtPnlBreed
+            // 
+            this.txtPnlBreed.Location = new System.Drawing.Point(224, 95);
+            this.txtPnlBreed.Name = "txtPnlBreed";
+            this.txtPnlBreed.Size = new System.Drawing.Size(100, 26);
+            this.txtPnlBreed.TabIndex = 9;
+            // 
+            // txtPnlGender
+            // 
+            this.txtPnlGender.Location = new System.Drawing.Point(224, 139);
+            this.txtPnlGender.Name = "txtPnlGender";
+            this.txtPnlGender.Size = new System.Drawing.Size(100, 26);
+            this.txtPnlGender.TabIndex = 10;
+            // 
+            // txtPnlDOB
+            // 
+            this.txtPnlDOB.Location = new System.Drawing.Point(224, 183);
+            this.txtPnlDOB.Name = "txtPnlDOB";
+            this.txtPnlDOB.Size = new System.Drawing.Size(164, 26);
+            this.txtPnlDOB.TabIndex = 11;
+            // 
+            // txtPnlNeutered
+            // 
+            this.txtPnlNeutered.Location = new System.Drawing.Point(224, 227);
+            this.txtPnlNeutered.Name = "txtPnlNeutered";
+            this.txtPnlNeutered.Size = new System.Drawing.Size(100, 26);
+            this.txtPnlNeutered.TabIndex = 12;
+            // 
+            // txtPnlOwnerID
+            // 
+            this.txtPnlOwnerID.Location = new System.Drawing.Point(224, 271);
+            this.txtPnlOwnerID.Name = "txtPnlOwnerID";
+            this.txtPnlOwnerID.Size = new System.Drawing.Size(100, 26);
+            this.txtPnlOwnerID.TabIndex = 13;
+            // 
+            // btnPnlCancel
+            // 
+            this.btnPnlCancel.Location = new System.Drawing.Point(116, 318);
+            this.btnPnlCancel.Name = "btnPnlCancel";
+            this.btnPnlCancel.Size = new System.Drawing.Size(119, 36);
+            this.btnPnlCancel.TabIndex = 14;
+            this.btnPnlCancel.Text = "Cancel";
+            this.btnPnlCancel.UseVisualStyleBackColor = true;
+            this.btnPnlCancel.Click += new System.EventHandler(this.btnPnlCancel_Click);
+            // 
+            // btnPnlSaveCat
+            // 
+            this.btnPnlSaveCat.Location = new System.Drawing.Point(269, 318);
+            this.btnPnlSaveCat.Name = "btnPnlSaveCat";
+            this.btnPnlSaveCat.Size = new System.Drawing.Size(119, 36);
+            this.btnPnlSaveCat.TabIndex = 15;
+            this.btnPnlSaveCat.Text = "Save Cat";
+            this.btnPnlSaveCat.UseVisualStyleBackColor = true;
+            this.btnPnlSaveCat.Click += new System.EventHandler(this.btnPnlSaveCat_Click);
             // 
             // CatForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(828, 558);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.pnlCat);
             this.Controls.Add(this.btnReturn);
             this.Controls.Add(this.btnDeleteCat);
             this.Controls.Add(this.btnUpdateCat);
@@ -271,6 +439,8 @@
             this.Controls.Add(this.lstCats);
             this.Name = "CatForm";
             this.Text = "Cat Maintenance";
+            this.pnlCat.ResumeLayout(false);
+            this.pnlCat.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -299,6 +469,22 @@
         private System.Windows.Forms.Button btnUpdateCat;
         private System.Windows.Forms.Button btnDeleteCat;
         private System.Windows.Forms.Button btnReturn;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.Panel pnlCat;
+        private System.Windows.Forms.Button btnPnlSaveCat;
+        private System.Windows.Forms.Button btnPnlCancel;
+        private System.Windows.Forms.TextBox txtPnlOwnerID;
+        private System.Windows.Forms.TextBox txtPnlNeutered;
+        private System.Windows.Forms.TextBox txtPnlDOB;
+        private System.Windows.Forms.TextBox txtPnlGender;
+        private System.Windows.Forms.TextBox txtPnlBreed;
+        private System.Windows.Forms.TextBox txtPnlCatName;
+        private System.Windows.Forms.Label lblPnlOwnerID;
+        private System.Windows.Forms.Label lblPnlNeutered;
+        private System.Windows.Forms.Label lblPnlDOB;
+        private System.Windows.Forms.Label lblPnlGender;
+        private System.Windows.Forms.Label lblPnlBreed;
+        private System.Windows.Forms.Label lblPnlCatName;
+        private System.Windows.Forms.Label lblPnlCatID;
+        private System.Windows.Forms.Label lblPnlCatNo;
     }
 }

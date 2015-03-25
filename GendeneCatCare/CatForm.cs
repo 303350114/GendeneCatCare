@@ -37,6 +37,14 @@ namespace GendeneCatCare
             txtDateOfBirth.DataBindings.Add("Text", DM.DSGlendene, "Cat.DateOfBirth");
             txtNeutered.DataBindings.Add("Text", DM.DSGlendene, "Cat.Neutered");
             txtOwnerID.DataBindings.Add("Text", DM.DSGlendene, "Cat.OwnerID");
+
+            txtCatName.Enabled = false;
+            txtBreed.Enabled = false;
+            txtDateOfBirth.Enabled = false;
+            txtGender.Enabled = false;
+            txtNeutered.Enabled = false;
+            txtOwnerID.Enabled = false;
+
             lstCats.DataSource = DM.DSGlendene;
             lstCats.DisplayMember = "Cat.Name";
             lstCats.ValueMember = "Cat.Name";
@@ -66,33 +74,13 @@ namespace GendeneCatCare
 
         private void btnAddCat_Click(object sender, EventArgs e)
         {
-            //Create a new row that the variables will be added into
-            DataRow newCatRow = DM.dtCat.NewRow();
+            disableCatFormElements();
+            resetCatPanelVal();
 
-            //If any of the text areas for required fields are empty then do not write data
-            if ((txtCatName.Text == "") ||
-                (txtGender.Text == "") || (txtDateOfBirth.Text == "") ||
-                (txtNeutered.Text == "") || (txtOwnerID.Text == ""))
-            {
-                MessageBox.Show("You must enter a value for each of the text fields", "Error");
-            }
-            else
-            {
-                newCatRow["Name"] = txtCatName.Text;
-                newCatRow["Breed"] = txtBreed.Text;
-                newCatRow["Gender"] = txtGender.Text;
-                newCatRow["DateOfBirth"] = txtDateOfBirth.Text;
-                newCatRow["Neutered"] = txtNeutered.Text;
-                newCatRow["OwnerID"] = txtOwnerID.Text;
+            lblPnlCatID.Visible = false;
+            lblPnlCatNo.Visible = false;
 
-                //Add the new row to the Table
-                DM.dtCat.Rows.Add(newCatRow);
-                DM.UpdateCat();
-                //Give the user a success message
-                MessageBox.Show("Cat added successfully", "Success");
-            }
-            return;
-
+            pnlCat.Show();
         }
 
         private void btnDeleteCat_Click(object sender, EventArgs e)
@@ -118,29 +106,114 @@ namespace GendeneCatCare
 
         private void btnUpdateCat_Click(object sender, EventArgs e)
         {
-            DataRow updateCatRow = DM.dtCat.Rows[currencyManager.Position];
+            disableCatFormElements();
+            resetCatPanelVal();
 
-            //If any of the text areas are empty then do not write data
-            if ((txtCatName.Text == "") ||
-                (txtGender.Text == "") || (txtDateOfBirth.Text == "") ||
-                (txtNeutered.Text == "") || (txtOwnerID.Text == ""))
+            lblPnlCatNo.Visible = true;
+            lblPnlCatID.Visible = true;
+            DataRow updateCatRow = DM.dtCat.Rows[currencyManager.Position];
+            lblPnlCatID.Text = updateCatRow["CatID"].ToString();
+            txtPnlOwnerID.Text = updateCatRow["OwnerID"].ToString();
+            txtPnlNeutered.Text = updateCatRow["Neutered"].ToString();
+            txtPnlGender.Text = updateCatRow["Gender"].ToString();
+            txtPnlDOB.Text = updateCatRow["DateOfBirth"].ToString();
+            txtPnlCatName.Text = updateCatRow["Name"].ToString();
+            txtPnlBreed.Text = updateCatRow["Breed"].ToString();
+
+            pnlCat.Show();
+        }
+                
+        private void btnPnlCancel_Click(object sender, EventArgs e)
+        {
+            enableCatFormElements();
+
+            pnlCat.Hide();
+        }
+
+        private void btnPnlSaveCat_Click(object sender, EventArgs e)
+        {
+            //If any of the text areas for required fields are empty then do not write data
+            if ((txtPnlCatName.Text == "") ||
+                (txtPnlGender.Text == "") || (txtPnlDOB.Text == "") ||
+                (txtPnlNeutered.Text == "") || (txtPnlOwnerID.Text == ""))
             {
                 MessageBox.Show("You must enter a value for each of the text fields", "Error");
             }
             else
             {
-                updateCatRow["Name"] = txtCatName.Text;
-                updateCatRow["Breed"] = txtBreed.Text;
-                updateCatRow["Gender"] = txtGender.Text;
-                updateCatRow["DateOfBirth"] = txtDateOfBirth.Text;
-                updateCatRow["Neutered"] = txtNeutered.Text;
-                currencyManager.EndCurrentEdit();
-                DM.UpdateCat();
-                //Give the user a success message
-                MessageBox.Show("Cat updated successfully", "Success");
-            }
-            return;
+                DataRow catRow;
+                if (lblPnlCatID.Text == null || lblPnlCatID.Text.Equals(""))
+                {
+                    catRow = DM.dtCat.NewRow();//Create a new row that the variables will be added into
+                    catRow["Name"] = txtPnlCatName.Text;
+                    catRow["Breed"] = txtPnlBreed.Text;
+                    catRow["Gender"] = txtPnlGender.Text;
+                    catRow["DateOfBirth"] = txtPnlDOB.Text;
+                    catRow["Neutered"] = txtPnlNeutered.Text;
+                    catRow["OwnerID"] = txtPnlOwnerID.Text;
 
+                    //Add the new row to the Table
+                    DM.dtCat.Rows.Add(catRow);
+                    DM.UpdateCat();
+
+                    enableCatFormElements();
+                    pnlCat.Hide();
+
+                    //Give the user a success message
+                    MessageBox.Show("Cat added successfully", "Success");
+                }
+                else
+                {
+                    catRow = DM.dtCat.Rows[currencyManager.Position];
+                    catRow["Name"] = txtPnlCatName.Text;
+                    catRow["Breed"] = txtPnlBreed.Text;
+                    catRow["Gender"] = txtPnlGender.Text;
+                    catRow["DateOfBirth"] = txtPnlDOB.Text;
+                    catRow["Neutered"] = txtPnlNeutered.Text;
+
+                    currencyManager.EndCurrentEdit();
+                    DM.UpdateCat();
+
+                    enableCatFormElements();
+                    pnlCat.Hide();
+
+                    //Give the user a success message
+                    MessageBox.Show("Cat updated successfully", "Success");
+                }
+            }
+        }
+
+        private void disableCatFormElements()
+        {
+            btnPrevious.Enabled = false;
+            btnNext.Enabled = false;
+            btnAddCat.Enabled = false;
+            btnUpdateCat.Enabled = false;
+            btnDeleteCat.Enabled = false;
+            btnReturn.Enabled = false;
+            lstCats.Visible = false;
+        }
+
+        private void enableCatFormElements()
+        {
+            btnPrevious.Enabled = true;
+            btnNext.Enabled = true;
+            btnAddCat.Enabled = true;
+            btnUpdateCat.Enabled = true;
+            btnDeleteCat.Enabled = true;
+            btnReturn.Enabled = true;
+            lstCats.Visible = true;
+        }
+
+        private void resetCatPanelVal()
+        {
+            lblPnlCatID.Text = null;
+            txtPnlBreed.Text = "";
+            txtPnlCatName.Text = "";
+            txtPnlDOB.Text = "";
+            txtPnlGender.Text = "";
+            txtPnlNeutered.Text = "";
+            txtPnlOwnerID.Text = "";
         }
 
     }
